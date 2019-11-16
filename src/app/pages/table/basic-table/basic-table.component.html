@@ -1,17 +1,20 @@
-<nz-table #basicTable [nzData]="listOfData">
+<nz-table #basicTable [nzData]="listOfData"
+  nzBordered
+  [nzScroll]="{ y: '400px' }"
+>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>    
+      <th nzWidth="150px">Name</th>
+      <th nzWidth="50px">Age</th>
+      <th nzWidth="250px">Address</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{data.name}}</td>
-      <td>{{data.age}}</td>
-      <td>{{data.address}}</td>
+      <td nzWidth="150px">{{data.name}}</td>
+      <td nzWidth="50px">{{data.age}}</td>
+      <td nzWidth="250px">{{data.address}}</td>
       <td>
         <a>Action 一 {{data.name}}</a>
         <nz-divider nzType="vertical"></nz-divider>
