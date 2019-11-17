@@ -1,5 +1,5 @@
 <div class="user-operation">
-<!--     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+  <!--     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="input search text" />
     </nz-input-group>
     <ng-template #suffixIconButton>
@@ -8,13 +8,11 @@
   <button nz-button nzType="primary" (click)="addUser()">新增</button>
 </div>
 
-<nz-table #basicTable [nzData]="listOfData"
-  class="base-table"
-  nzBordered
+<nz-table #basicTable [nzData]="listOfData" class="base-table" nzBordered 
   [nzShowSizeChanger]="true"
-  [nzPageSizeOptions]="pageSize"
-  [nzScroll]="{ y: '400px' }"
->
+  [nzPageSizeOptions]="pageSize" 
+  [nzShowTotal]="totalTemplate"
+  [nzScroll]="{ y: '360px' }">
   <thead>
     <tr>
       <th nzAlign="center" nzWidth="150px">Name</th>
@@ -35,3 +33,37 @@
     </tr>
   </tbody>
 </nz-table>
+<ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="新增" nzOkText="确定" nzCancelText="取消" (nzOnOk)="submitForm()"
+  (nzOnCancel)="handleCancel()">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">名字</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
+        <input nz-input formControlName="name" id="name" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24"  nzFor="age" nzRequired>年龄</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your age!">
+        <input nz-input id="age" formControlName="age"/>    
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24"  nzFor="birthday" nzRequired>生日</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your birthday!">
+        <nz-date-picker formControlName="birthday"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>地址</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your address!">
+        <input nz-input id="address" formControlName="address"/>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>

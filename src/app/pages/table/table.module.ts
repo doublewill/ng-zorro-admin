@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './table.component';
 import { TableRoutingModule } from './table-routing.module'
 import { NgZorroAntdModule } from 'ng-zorro-antd';
@@ -13,7 +13,8 @@ import { BasicTableComponent } from './basic-table/basic-table.component';
     CommonModule,
     TableRoutingModule,
     NgZorroAntdModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TableModule { }

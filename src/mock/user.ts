@@ -1,7 +1,4 @@
-let Mock = require('mockJs')
-let Random = Mock.Random
-let mock = Mock.mock
-
+import { Random, mock } from 'mockjs'
 let userList = []
 
 for(let Idx = 0; Idx < 200; Idx++) {
@@ -14,6 +11,11 @@ for(let Idx = 0; Idx < 200; Idx++) {
   })
 }
 
+const newId =()=>{
+  return mock('@natural') 
+}
+
 export {
-  userList
+  userList,
+  newId
 }
