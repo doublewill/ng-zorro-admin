@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsComponent } from './pages/icons/icons.component'
+import { FormComponent } from './pages/form/form.component'
 
 import { IconsProviderModule } from './icons-provider.module';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
@@ -18,7 +19,8 @@ registerLocaleData(zh);
 @NgModule({
   declarations: [
     AppComponent,
-    IconsComponent
+    IconsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ registerLocaleData(zh);
     IconsProviderModule,
     NgZorroAntdModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],

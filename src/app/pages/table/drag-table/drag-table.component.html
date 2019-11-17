@@ -1,1 +1,21 @@
-<p>drag-table works!</p>
+<nz-table #basicTable [nzData]="listOfData" class="base-table" nzBordered
+  [nzFrontPagination]="false"
+  [nzShowPagination]="false"
+  [nzPageSizeOptions]="pageSize"
+  [nzScroll]="{ y: '360px' }">
+  <thead>
+    <tr>
+      <th nzAlign="center" nzWidth="150px">Name</th>
+      <th nzAlign="center" nzWidth="50px">Age</th>
+      <th nzAlign="center">Address</th>
+      <th nzAlign="center" nzWidth="180px">Action</th>
+    </tr>
+  </thead>
+  <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+    <tr *ngFor="let data of listOfData" cdkDrag>
+      <td>{{data.name}}</td>
+      <td>{{data.age}}</td>
+      <td>{{data.address}}</td>
+    </tr>
+  </tbody>
+</nz-table>
