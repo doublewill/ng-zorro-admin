@@ -1,7 +1,7 @@
 <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
-            nzWidth="256px"
+            nzWidth="180px"
             nzBreakpoint="md"
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
@@ -32,6 +32,13 @@
           </li>
         </ul>
       </li>
+      <li nz-submenu nzOpen nzTitle="Icons" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/icons">Icons</a>
+          </li>
+        </ul>
+      </li>      
       <li nz-submenu nzOpen nzTitle="Table" nzIcon="table">
         <ul>
           <li nz-menu-item nzMatchRouter>
