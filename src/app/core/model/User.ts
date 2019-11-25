@@ -2,6 +2,6 @@ export class User {
   id: number;
   name: string;
   age: number;
-  birthday: string; 
+  birthday: string;
   address: string
 }

@@ -1,25 +1,26 @@
-<nz-table #basicTable [nzData]="listOfData"
+<nz-table #basicTable [nzData]="listOfData"  class="base-table"
   nzBordered
   [nzScroll]="{ y: '400px' }"
+  [nzShowSizeChanger]="true"
+  [nzPageSizeOptions]="pageSize"
+  [nzShowTotal]="totalTemplate"
+  [nzScroll]="{ y: '360px' }"
 >
   <thead>
     <tr>
       <th nzAlign="center" nzWidth="150px">Name</th>
       <th nzAlign="center" nzWidth="50px">Age</th>
-      <th nzAlign="center" nzWidth="250px">Address</th>
-      <th nzAlign="center">Action</th>
+      <th nzAlign="center" nzWidth="150px">Birthday</th>
+      <th nzAlign="center">Address</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td nzWidth="150px">{{data.name}}</td>
-      <td nzWidth="50px">{{data.age}}</td>
-      <td nzWidth="250px">{{data.address}}</td>
-      <td>
-        <a>Action 一 {{data.name}}</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
-      </td>
+      <td>{{data.name}}</td>
+      <td>{{data.age}}</td>
+      <td>{{data.birthday}}</td>
+      <td>{{data.address}}</td>
     </tr>
   </tbody>
 </nz-table>
+<ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>

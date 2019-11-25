@@ -16,12 +16,16 @@ export class DragTableComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
+  getUsers(): void {
+    this.userService.getUserList().subscribe(users => this.listOfData = users)
+  }
+
   ngOnInit() {
-    this.listOfData = this.userService.getUserList()    
+    this.getUsers()
     this.total = this.listOfData.length
   }
 
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.listOfData, event.previousIndex, event.currentIndex);
-  }  
+  }
 }

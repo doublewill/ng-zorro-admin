@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../../core/service/user.service'
-
+import { User } from '../../../core/model/User'
 @Component({
   selector: 'app-complex-table',
   templateUrl: './complex-table.component.html',
   styleUrls: ['./complex-table.component.scss']
 })
 export class ComplexTableComponent implements OnInit {
-  listOfData = []
+  private listOfData :User[] = []
   pageSize = [10, 30, 50, 100]
   isVisible = false
   total = 0
@@ -27,14 +27,17 @@ export class ComplexTableComponent implements OnInit {
     return {};
   };
 
+  constructor(private userService: UserService, private fb: FormBuilder) { }
+
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();
   }
-
-  constructor(private userService: UserService, private fb: FormBuilder) { }
+  getUsers(): void {
+    this.userService.getUserList().subscribe(users => this.listOfData = users)
+  }
 
   ngOnInit() {
-    this.listOfData = this.userService.getUserList()
+    this.getUsers()
     this.total = this.listOfData.length
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -49,8 +52,8 @@ export class ComplexTableComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
     if(this.validateForm.status === 'VALID') {
-      this.listOfData = this.userService.addUser(this.validateForm.value)   
-      this.total = this.listOfData.length            
+      this.userService.addUser({...this.validateForm.value} as User).subscribe(user=> this.listOfData.push(user))
+      this.total = this.listOfData.length
       this.handleCancel()
     }
   }
