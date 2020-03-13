@@ -1,21 +1,15 @@
 <nz-row [nzGutter]="16">
-  <nz-col [nzSpan]="12">
-    <nz-card>
-      <nz-statistic [nzValue]="11.28" [nzTitle]="'Active'" [nzPrefix]="prefixTplOne" [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#3F8600' }">
-      </nz-statistic>
-      <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
-    </nz-card>
-  </nz-col>
-  <nz-col [nzSpan]="12">
-    <nz-card>
-      <nz-statistic [nzValue]="9.3" [nzTitle]="'Idle'" [nzPrefix]="prefixTplTwo" [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#CF1322' }">
-      </nz-statistic>
-      <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
-    </nz-card>
-  </nz-col>
-</nz-row>   
+  <!-- <div *ngFor="let statistic of statisticList">
+    <nz-col [nzSpan]="6">
+      <nz-card>
+        <nz-statistic [nzValue]="11.28" [nzTitle]="statistic.title" [nzPrefix]="prefixTplOne" [nzSuffix]="statistic.suffix"
+          [nzValueStyle]="{ color: '#3F8600' }">
+        </nz-statistic>
+        <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
+      </nz-card>
+    </nz-col>
+  </div> -->
+</nz-row>
 <div class="chart-link">
   <a href="https://www.echartsjs.com/examples/zh/index.html" target="_blank">Echarts</a>
 </div>

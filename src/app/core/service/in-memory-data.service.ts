@@ -20,6 +20,8 @@ for(let Idx = 0; Idx < 200; Idx++) {
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = userList;
-    return {users};
+    return {
+      users
+    };
   }
 }
